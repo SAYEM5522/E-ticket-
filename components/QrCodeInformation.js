@@ -3,12 +3,12 @@ import React from 'react'
 
 const QrCodeInformation = ({route}) => {
   const {data}=route.params
+  data.split(" ")
   return (
     <View style={styles.container}>
-      <Text style={styles.Ticket}>Bus Name: Bkash</Text>
-      <Text style={styles.Ticket}>Departure: Mirpur 10</Text>
-      <Text style={styles.Ticket}>Destination: Mirpur 11</Text>
-      <Text style={styles.Ticket}>Bus Fare: 10 Taka</Text>
+      <Text style={styles.Ticket}>Bus Name: {data.split(" ")[0]}</Text>
+      <Text style={styles.Ticket}>Departure: {data.split(" ")[1]}</Text>
+      <Text style={styles.Ticket}>Destination: {data.split(" ")[2]}</Text>
 
 
     </View>

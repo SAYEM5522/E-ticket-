@@ -8,14 +8,21 @@ import QrCodeInformation from './components/QrCodeInformation';
 import SignUp from './components/SignUp';
 import SignIn from './components/SignIn';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 export default function App() {
   const Stack=createNativeStackNavigator()
+   const [token,settoken]=useState(false)
+   const gettoken=async()=>{
+      settoken(await AsyncStorage.getItem("pessToken"))
+   }
+   useEffect(()=>{
+    gettoken()
 
-  const app=AsyncStorage.getItem("token")
+   },[token])
   return (
     <NavigationContainer>
     {
-      app?
+      token?
       <Stack.Navigator >
         <Stack.Screen name='Home' component={Home} options={{headerShown:false}}/>
         <Stack.Screen name='QrCode' component={QrCode}/>

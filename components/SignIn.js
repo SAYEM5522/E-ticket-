@@ -39,15 +39,15 @@ const SignIn = () => {
 const headers={
   'Authorization': 'basic T64Mdy7m['
 }
-  const Submit=useCallback(async()=>{
+  const Submit=async()=>{
     try {
-      const res = await axios.post(`http://192.168.0.106:5001/CheckerLogIn`,{pin:pin},headers)
-      AsyncStorage.setItem("token",res.data.token)
+      const res = await axios.post(`http://192.168.0.102:5001/CheckerLogIn`,{pin:pin},headers)
+      await AsyncStorage.setItem("pessToken",res.data.token)
       console.log(res.data.message)
     } catch(err) {
       console.log(err.message);
     }
-  },[])
+  }
 
   return (
     <View style={styles.container}>
